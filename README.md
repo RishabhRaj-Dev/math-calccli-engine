@@ -29,6 +29,6 @@ You can also run it on ide perform following after installation
 3.Select the folder Project Python
 4.Select and run the calccli.py file
 5. Click Run
-License:
+# License:
 This project is licensed under MIT License
 
