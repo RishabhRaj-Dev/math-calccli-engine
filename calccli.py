@@ -318,7 +318,7 @@ while True:
             except:
                 print("Reenter only nos. sir")
     if c==20:
-        f=degree_to_radians()x
+        f=degree_to_radians()
     if c==21:
         while True:
             try:
