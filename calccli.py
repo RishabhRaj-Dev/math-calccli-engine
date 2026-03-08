@@ -26,7 +26,7 @@ print('''Pls choose by entering the number infront of the menu item you wish to 
 def get_number():
     while True:
         try:
-            a=int(input("Pls enter your number"))
+            a=float(input("Pls enter your number"))
             return a 
         except ValueError:
             print("Only a no. reenter")
@@ -44,7 +44,7 @@ def badval():
 def dval():
     while True:
         try:
-            b=int(input("Enter ur number"))
+            b=float(input("Enter ur number"))
             l.append(b)
             return l
         except ValueError:
@@ -61,7 +61,7 @@ def dval2():
 def dval3():
     while True:
         try:
-            b=int(input("Enter ur number"))
+            b=float(input("Enter ur number"))
             l.append(b)
             try:
                 difference=l[-2]-l[-1]
@@ -75,7 +75,7 @@ def dval3():
 def dval4():
     while True:
         try:
-            b=int(input("Enter ur number"))
+            b=float(input("Enter ur number"))
             l.append(b)
             multiply=l[-2]*l[-1]
             l.append(multiply)
@@ -90,8 +90,8 @@ def add_more_number():
 def dval5():
     while True:
         try:
-            b_dividend=int(input('Enter your dividend'))
-            b=int(input("Enter ur divisor"))
+            b_dividend=float(input('Enter your dividend'))
+            b=float(input("Enter ur divisor"))
             while True:
                 try:
                     q=float(b_dividend/b)
@@ -105,7 +105,7 @@ def dval5():
 def degree_to_radians():
     while True:
         try:
-            k=int(input('Enter your value in degrees pls'))
+            k=float(input('Enter your value in degrees pls'))
             radi=m.radians(k)
             print("This is yourr value is radians",radi)
             return radi
