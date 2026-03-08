@@ -14,14 +14,14 @@ git clone https://github.com/RishabhRaj-Dev/math-calccli-engine.git
 
 2. Navigate to the project folder:
 
-cd "Project Python"
+cd math-calccli-engine
 (Make sure to get the space between Python and Project and it is case sensitive!)
 
-3. Make sure Python is installed on your system.
+3. Make sure Python3 is installed on your system.
 # Usage and Running
 ## Option 1- Terminal
 1.In the project folder run:
-python calccli.py
+python3 calccli.py
 ## Option 2-IDE
 You can also run it on ide perform following after installation
 ## 1.Open IDE
