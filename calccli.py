@@ -1,5 +1,6 @@
 print("This is a calculator cpi program for your calculations this aims to make them easier")
 import math as m
+from pathlib import Path
 print('''Pls choose by entering the number infront of the menu item you wish to perform
           1.addition
           2.subtraction
@@ -22,7 +23,9 @@ print('''Pls choose by entering the number infront of the menu item you wish to 
           19. log10
           20. degree to radians
           21.radians to degree
-          22. power of function e''')
+          22. power of function e
+          23.View Calculation History''')
+file_path=Path(__file__).parent/"calchistory.txt"
 def get_number():
     while True:
         try:
@@ -150,6 +153,12 @@ def return_trig_rsult():
             return z
         except ValueError:
             print("Error in value reenter")
+def log_recorder(op,res):
+    try:
+        with open(file_path,"a") as f:
+            f.write(f"operation:{op}||result:{res}\n")
+    except OSError:
+        print("Sorry your system doesnt gives us the permission to create the file you are unable to use the history function")
 while True:
     c=badval()
     if c==1:
@@ -164,6 +173,7 @@ while True:
             if b3==2:
                  print("Thank You for your operations")
                  print('Your answer is',sum(f))
+                 log_recorder("Addition",sum(f))
                  break
     if c==2:
         l=[]
@@ -177,6 +187,7 @@ while True:
             if b3==2:
                 print("Thank You for your operations")
                 print('Your answer is',l[-1])
+                log_recorder("Subtraction",l[-1])
                 break
     if c==3:
         l=[1]
@@ -190,18 +201,23 @@ while True:
             if b3==2:
                 print("Thank You for your operations")
                 print('Your answer is',l[-1])
+                log_recorder("Multiply",l[-1])
                 break
     if c==4:
         f=dval5()
         print("The value after your operation is",f)
+        log_recorder("Divison",f)
     if c==5:
         print("The nos. you will be entering will be used as base and exponent for your operation, first input is base the second input is an exponent")
         f=get_number()
         k=get_number()
         print('The value of ur operations is',m.pow(f,k))
+        log_recorder("Exponentation",m.pow(f,k))
+        
     if c==6:
         f=get_number()
         print('Your value of the operation is',m.sqrt(f))
+        log_recorder("Square Root",m.sqrt(f))
     if c==7:
         print("""Do you know you value in radians or not
         1.Yes
@@ -217,54 +233,67 @@ while True:
         if k==1:
             g=return_trig_rsult()
             print("The val of your tan is",m.tan(g))
+            log_recorder("Tangent",m.tan(g))
         if k==2:
             puredegree=degree_to_radians()
             print("The value of your tan is",m.tan(puredegree))
+            log_recorder("Tangent",m.tan(puredegree))
     if c==8:
         k=get_popup_menu()
         if k==1:
             g=return_trig_rsult()
             print("Your value in sin is",m.sin(g))
+            log_recorder("Sine",m.sin(g))
         if k==2:
             puredegree=degree_to_radians()
             print("The val of your sin",m.sin(puredegree))
+            log_recorder("Sine",m.sin(puredegree))
     if c==9:
         k=get_popup_menu()
         if k==1:
             g=return_trig_rsult()
             print("Your value in sin is",m.cos(g))
+            log_recorder("Cosine",m.cos(g))
         if k==2:
             puredegree=degree_to_radians()
             print("The val of your sin",m.cos(puredegree))
+            log_recorder("Cosine",m.cos(puredegree))
     if c==10:
         k=get_popup_menu()
         if k==1:
             g=return_trig_rsult()
             print("Your value in sin is",1/m.sin(g))
+            log_recorder("Cosecant",1/m.sin(g))
         if k==2:
             puredegree=degree_to_radians()
             print("The val of your sin",1/m.sin(puredegree))
+            log_recorder("Cosecant",1/m.sin(puredegree))
     if c==11:
         k=get_popup_menu()
         if k==1:
             g=return_trig_rsult()
             print("Your value in sin is",1/m.cos(g))
+            log_recorder("Secant",1/m.cos(g))
         if k==2:
             puredegree=degree_to_radians()
             print("The val of your sin",1/m.cos(puredegree))
+            log_recorder("Secant",1/m.cos(puredegree))
     if c==12:
         k=get_popup_menu()
         if k==1:
             g=return_trig_rsult()
             print("Your value in sin is",1/m.tan(g))
+            log_recorder("CoTangent",1/m.tan(g))
         if k==2:
             puredegree=degree_to_radians()
             print("The val of your sin",1/m.tan(puredegree))
+            log_recorder("CoTangent",1/m.tan(puredegree))
     if c==13:
         while True:
             try:
                 fact=int(input("Enter the number you would like to get a fcatorial of"))
                 print("The value is",m.factorial(fact))
+                log_recorder("Factorial",m.factorial(fact))
                 break
             except:
                 print("Reenter only nos. sir")
@@ -273,6 +302,7 @@ while True:
             try:
                 sq=float(input("Enter the number you would like to get the square of"))
                 print("The value is",sq*sq)
+                log_recorder("Square",sq*sq)
                 break
             except:
                 print("Reenter only nos. sir")
@@ -281,6 +311,7 @@ while True:
             try:
                 ceil=float(input("Enter the number you would like to get ceiling of"))
                 print("The value is",m.ceil(ceil))
+                log_recorder("Ceiling",m.ceil(ceil))
                 break
             except:
                 print("Reenter only nos. sir")
@@ -289,6 +320,7 @@ while True:
             try:
                 abs=float(input("Enter the number you would like to get a modulus of"))
                 print("The value is",m.fabs(abs))
+                log_recorder("Modulus",m.fabs(abs))
                 break
             except:
                 print("Reenter only nos. sir")
@@ -297,6 +329,7 @@ while True:
             try:
                 floor=float(input("Enter the number you would like to get the floor of"))
                 print("The value is",m.floor(floor))
+                log_recorder("Floor",m.floor(floor))
                 break
             except:
                 print("Reenter only nos. sir")
@@ -306,6 +339,7 @@ while True:
                 base=int(input("Enter the base"))
                 num=int(input("Enter number"))
                 print("The value is",m.log(num,base))
+                log_recorder("Logarithm",m.log(num,base))
                 break
             except:
                 print("Issue in your input")
@@ -314,11 +348,13 @@ while True:
             try:
                 log10num=int(input("Enter the number you would like to get the base 10 log of"))
                 print("The value is",m.log10(log10num))
+                log_recorder("Logarithm10",m.log10(log10num))
                 break
             except:
                 print("Reenter only nos. sir")
     if c==20:
         f=degree_to_radians()
+        log_recorder("Degree to Radians",f)
     if c==21:
         while True:
             try:
@@ -328,9 +364,20 @@ while True:
             except:
                 print('Issue in ur value')
         print("your val in degree is",m.degrees(f))
+        log_recorder("Radians to Degree",m.degrees(f))
     if c==22:
         exparg=int(input("Enter ur exponent you wish e to be raised to"))
         print('Your value is',m.exp(exparg))
+        log_recorder("Exponentation of function e",m.exp(exparg))
+    if c==23:
+        try:
+            with open(file_path,"r") as f:
+                print("Calculation History")
+                print(f.read())
+        except FileNotFoundError:
+            print("No calculation perfomed yet perform a calculation first")
+                
+    
         
     
         
